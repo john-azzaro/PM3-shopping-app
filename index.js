@@ -1,18 +1,19 @@
 'use strict';
 
+// Goals for Saturday:  
+// 1: understand how to add new item to shopping list
+// 2: do the checked item button
+// 3: do delete item button
+// Also, understand how to pass parameters from one function to another.
+
+
+
 const STORE = [
   {name: "apples", checked: false},
   {name: "oranges", checked: false},
   {name: "milk", checked: false},
   {name: "bread", checked: false}
 ];
-
-function getItemIndexFromElement(item) {
-    const itemIndexString = $(item)
-      .closest('.js-item-index-element')
-      .attr('data-item-index');
-    return parseInt(itemIndexString, 10);
-  }
 
 function addItemToShoppingList(itemName) {
     STORE.push({name: itemName, checked: false});
