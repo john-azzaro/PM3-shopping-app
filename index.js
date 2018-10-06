@@ -22,7 +22,7 @@ function addItemToShoppingList(itemName) {
 function generateItemElement(item, itemIndex, template) {
   return `
     <li class="js-item-index-element" data-item-index="${itemIndex}">
-      <span class="shopping-item js-shopping-item ${item.checked ? "shopping-item__checked" : ''}">${item.name}</span> 
+      <span class="shopping-item">${item.name}</span> 
     </li>
     `
 }
@@ -50,8 +50,6 @@ function handleNewItemSubmit() {
 function handleShoppingList() {
   renderShoppingList();
   handleNewItemSubmit();
-  handleItemCheckClicked();
-  handleDeleteItemClicked();
 }
 
 $(handleShoppingList);
