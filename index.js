@@ -2,22 +2,25 @@
 
 
 
-
+// render the shopping list in the DOM
 function renderShoppingList() {
+// generate a string to 
     const shoppingListItemString = generateShoppingListItemString(STORE)
     $('main').html(shoppingListItemString);
 }
 
 // when the user submits a new iem, push new item onto the store and re-render list from the DOM.
 function handleNewItemSubmit() {
-    // upon the user clicking the submit button...
+// upon the user clicking submit...
     $(".js-shopping-list-form").submit(function(event) {
-        // prevent defualt form submission behavior (no reset)...
+// prevent default form submission behavior (no reset)...
         event.preventDefault();
         // new item variable...
         const newItemName = $('.js-shopping-list-entry').val();
+// reset input field
         $('.js-shopping-list-entry').val("").
-        addItemToShoppingList();
+// run "addItemToShoppingList" and pass our new user-input "NewItemName" as a parameter.
+        addItemToShoppingList(newItemName);
         renderShoppingList();
     })
 }

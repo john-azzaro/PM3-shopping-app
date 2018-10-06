@@ -6,6 +6,7 @@
     font-family: 'Roboto', sans-serif;
   }
   
+  /* button and input field size*/
   button, input[type="text"] {
     padding: 5px;
   }
