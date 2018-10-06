@@ -11,15 +11,7 @@ const STORE = [
 function generateItemElement(item, itemIndex, template) {
   return `
     <li class="js-item-index-element" data-item-index="${itemIndex}">
-      <span class="shopping-item js-shopping-item ${item.checked ? "shopping-item__checked" : ''}">${item.name}</span>
-      <div class="shopping-item-controls">
-        <button class="shopping-item-toggle js-item-toggle">
-            <span class="button-label">check</span>
-        </button>
-        <button class="shopping-item-delete js-item-delete">
-            <span class="button-label">delete</span>
-        </button>
-      </div>
+      <span class="shopping-item js-shopping-item ${item.checked ? "shopping-item__checked" : ''}">${item.name}</span> 
     </li>`;
 }
 
@@ -49,10 +41,6 @@ function handleNewItemSubmit() {
     addItemToShoppingList(newItemName);
     renderShoppingList();
   });
-}
-
-function toggleCheckedForListItem(itemIndex) {
-  STORE[itemIndex].checked = !STORE[itemIndex].checked;
 }
 
 function getItemIndexFromElement(item) {
