@@ -1,34 +1,72 @@
-"use strict";
+'use strict';
+
+const STORE = [
+  {name: "apples", checked: false},
+  {name: "oranges", checked: false},
+  {name: "milk", checked: true},
+  {name: "bread", checked: false}
+];
 
 
+function generateItemElement(item, itemIndex, template) {
+  return `
+    <li class="js-item-index-element" data-item-index="${itemIndex}">
+      <span class="shopping-item js-shopping-item ${item.checked ? "shopping-item__checked" : ''}">${item.name}</span>
+      <div class="shopping-item-controls">
+        <button class="shopping-item-toggle js-item-toggle">
+            <span class="button-label">check</span>
+        </button>
+        <button class="shopping-item-delete js-item-delete">
+            <span class="button-label">delete</span>
+        </button>
+      </div>
+    </li>`;
+}
 
-// render the shopping list in the DOM
+function generateShoppingItemsString(shoppingList) {
+  console.log("Generating shopping list element");
+  const items = shoppingList.map((item, index) => generateItemElement(item, index));
+  return items.join("");
+}
+
 function renderShoppingList() {
-// generate a string to 
-    const shoppingListItemString = generateShoppingListItemString(STORE)
-    $('main').html(shoppingListItemString);
+  console.log('`renderShoppingList` ran');
+  const shoppingListItemsString = generateShoppingItemsString(STORE);
+  $('.js-shopping-list').html(shoppingListItemsString);
 }
 
-// when the user submits a new iem, push new item onto the store and re-render list from the DOM.
+function addItemToShoppingList(itemName) {
+  console.log(`Adding "${itemName}" to shopping list`);
+  STORE.push({name: itemName, checked: false});
+}
+
 function handleNewItemSubmit() {
-// upon the user clicking submit...
-    $(".js-shopping-list-form").submit(function(event) {
-// prevent default form submission behavior (no reset)...
-        event.preventDefault();
-        // new item variable...
-        const newItemName = $('.js-shopping-list-entry').val();
-// reset input field
-        $('.js-shopping-list-entry').val("").
-// run "addItemToShoppingList" and pass our new user-input "NewItemName" as a parameter.
-        addItemToShoppingList(newItemName);
-        renderShoppingList();
-    })
+  $('#js-shopping-list-form').submit(function(event) {
+    event.preventDefault();
+    console.log('`handleNewItemSubmit` ran');
+    const newItemName = $('.js-shopping-list-entry').val();
+    $('.js-shopping-list-entry').val('');
+    addItemToShoppingList(newItemName);
+    renderShoppingList();
+  });
 }
 
-// callback for when the page loads, rendering shopping list, activating individual functions.
-function handleShoppingList() {
-    renderShoppingList();
-    handleNewItemSubmit();
+function toggleCheckedForListItem(itemIndex) {
+  STORE[itemIndex].checked = !STORE[itemIndex].checked;
 }
-// when page loads, call "handleShoppingList"
+
+function getItemIndexFromElement(item) {
+  const itemIndexString = $(item)
+    .closest('.js-item-index-element')
+    .attr('data-item-index');
+  return parseInt(itemIndexString, 10);
+}
+
+function handleShoppingList() {
+  renderShoppingList();
+  handleNewItemSubmit();
+  handleItemCheckClicked();
+  handleDeleteItemClicked();
+}
+
 $(handleShoppingList);
