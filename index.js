@@ -9,19 +9,19 @@
 
 
 const STORE = [
-  {name: "apples", checked: false},
-  {name: "oranges", checked: false},
-  {name: "milk", checked: false},
-  {name: "bread", checked: false}
+  {name: "apples"},
+  {name: "oranges"},
+  {name: "milk"},
+  {name: "bread"}
 ];
 
 function addItemToShoppingList(itemName) {
-    STORE.push({name: itemName, checked: false});
+    STORE.push({name: itemName});
   }
 
-function generateItemElement(item, itemIndex, template) {
+function generateItemElement(item, itemIndex) {
   return `
-    <li class="js-item-index-element" data-item-index="${itemIndex}">
+    <li class="data-item-index="${itemIndex}">
       <span class="shopping-item">${item.name}</span> 
     </li>
     `
