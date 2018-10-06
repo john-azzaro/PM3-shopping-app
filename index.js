@@ -1,10 +1,7 @@
 'use strict';
-
-// Goals for Saturday:  
-// 1: understand how to add new item to shopping list
-// 2: do the checked item button
-// 3: do delete item button
-// Also, understand how to pass parameters from one function to another.
+// Main: Add an item to the shopping list
+// 2nd: Add delete button to the shopping list
+// 3rd: Add checked button to the shopping list
 
 
 
@@ -47,9 +44,13 @@ function handleNewItemSubmit() {
   });
 }
 
+// 2: This function is the callback when out page first loads...
+// 2.1: 'renderShoppingList' will generate the HTML and a list of items stored in STORE... 
+// 2.2: 'handleNewItemSubmit' will listen for when the user submits a shopping list item...
 function handleShoppingList() {
   renderShoppingList();
   handleNewItemSubmit();
 }
 
+// 1: When the page loads, call 'handleShoppingList'
 $(handleShoppingList);
