@@ -29,7 +29,6 @@ function generateItemHtmlElement(item) {
     `
 }
 
-
 // 4: This function generates a single string (via items.join("")) by mapping each item in the STORE array.
 // 
 function generateShoppingItems(shoppingList) {
