@@ -26,8 +26,8 @@ function generateShoppingItems(shoppingList) {
 }
 
 function renderShoppingList() {
-  const shoppingListItems = generateShoppingItems(STORE);
-  $('.js-shopping-list').html(shoppingListItems);
+  const listItems = generateShoppingItems(STORE);
+  $('.js-shopping-list').html(listItems);
 }
 
 function handleNewItemSubmission() {
