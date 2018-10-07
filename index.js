@@ -8,7 +8,7 @@ const STORE = [
 ];
 
 
-function addItemToShoppingList(itemName) {
+function addItemToList(itemName) {
     STORE.push({name: itemName});
   }
 
@@ -31,11 +31,11 @@ function renderShoppingList() {
 }
 
 function handleNewItemSubmission() {
-  $('#js-shopping-list-form').submit(function(event) {
+  $('main').submit('#js-shopping-list-form', function(event) {
     event.preventDefault();
     const newItemName = $('.js-shopping-list-entry').val();
     $('.js-shopping-list-entry').val('');
-    addItemToShoppingList(newItemName);
+    addItemToList(newItemName);
     renderShoppingList();
   });
 }
