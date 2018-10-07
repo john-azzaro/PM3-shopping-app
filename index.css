@@ -28,18 +28,18 @@
     margin: 0 auto;
   }
   
-  .shopping-list {
+  .css-shopping-list {
     list-style: none;
     padding-left: 0;
   }
   
-  .shopping-list > li {
+  .css-shopping-list > li {
     margin-bottom: 20px;
     border: 1px solid grey;
     padding: 20px;
   }
   
-  .shopping-item {
+  .css-shopping-item {
     display: block;
     color: grey;
     font-style: italic;
